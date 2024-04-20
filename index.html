@@ -23,12 +23,12 @@
         const result = [];
 
         // Iterate over the item array to create objects and push them into the result array
-        item.forEach((val, idx) => {
+        item.forEach((value, id) => {
             result.push({
-                item: val,
-                price: price[idx],
-                qty: qty[idx],
-                sub_total: subtotal[idx]
+                item: item[id],
+                price: price[id],
+                qty: qty[id],
+                sub_total: subtotal[id]
             });
         });
 
