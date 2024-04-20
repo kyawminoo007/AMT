@@ -70,6 +70,10 @@
             font-size: 12px;
             text-align: center;
         }
+
+        .right-align {
+    text-align: right;
+        }
     </style>
 </head>
 <body>
@@ -151,33 +155,36 @@ result.forEach(row => {
 });
 thermalPos.appendChild(table);
 
-        // Add total, payment, and balance to the receipt
-        const totalRow = document.createElement('tr');
-        const tdTotalLabel = document.createElement('th');
-        tdTotalLabel.textContent = 'Total';
-        const tdTotalValue = document.createElement('td');
-        tdTotalValue.textContent = total;
-        totalRow.appendChild(tdTotalLabel);
-        totalRow.appendChild(tdTotalValue);
-        table.appendChild(totalRow);
+      // Add total, payment, and balance to the receipt
+const totalRow = document.createElement('tr');
+const tdTotalLabel = document.createElement('th');
+tdTotalLabel.textContent = 'Total';
+const tdTotalValue = document.createElement('td');
+tdTotalValue.textContent = total;
+tdTotalValue.classList.add('right-align'); // Add a class for right alignment
+totalRow.appendChild(tdTotalLabel);
+totalRow.appendChild(tdTotalValue);
+table.appendChild(totalRow);
 
-        const paymentRow = document.createElement('tr');
-        const tdPaymentLabel = document.createElement('th');
-        tdPaymentLabel.textContent = 'Payment';
-        const tdPaymentValue = document.createElement('td');
-        tdPaymentValue.textContent = payment;
-        paymentRow.appendChild(tdPaymentLabel);
-        paymentRow.appendChild(tdPaymentValue);
-        table.appendChild(paymentRow);
+const paymentRow = document.createElement('tr');
+const tdPaymentLabel = document.createElement('th');
+tdPaymentLabel.textContent = 'Payment';
+const tdPaymentValue = document.createElement('td');
+tdPaymentValue.textContent = payment;
+tdPaymentValue.classList.add('right-align'); // Add a class for right alignment
+paymentRow.appendChild(tdPaymentLabel);
+paymentRow.appendChild(tdPaymentValue);
+table.appendChild(paymentRow);
 
-        const balanceRow = document.createElement('tr');
-        const tdBalanceLabel = document.createElement('th');
-        tdBalanceLabel.textContent = 'Balance';
-        const tdBalanceValue = document.createElement('td');
-        tdBalanceValue.textContent = balance;
-        balanceRow.appendChild(tdBalanceLabel);
-        balanceRow.appendChild(tdBalanceValue);
-        table.appendChild(balanceRow);
+const balanceRow = document.createElement('tr');
+const tdBalanceLabel = document.createElement('th');
+tdBalanceLabel.textContent = 'Balance';
+const tdBalanceValue = document.createElement('td');
+tdBalanceValue.textContent = balance;
+tdBalanceValue.classList.add('right-align'); // Add a class for right alignment
+balanceRow.appendChild(tdBalanceLabel);
+balanceRow.appendChild(tdBalanceValue);
+table.appendChild(balanceRow);
 
         // Add the footer
         const footerTable = document.createElement('table');
