@@ -23,8 +23,8 @@
         const result = [];
 
         // Iterate over the item array to create objects and push them into the result array
-        item.forEach((value, id) => {
-            result.push({
+        item.forEach(function(value, id) => {
+            result[id] = {
                 item: item[id],
                 price: price[id],
                 qty: qty[id],
