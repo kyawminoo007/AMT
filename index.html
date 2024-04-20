@@ -53,11 +53,36 @@
         .qty-price {
             text-align: left;
         }
+
+        /* Additional styles for the clinic, address, and contact */
+        #clinic-info {
+            margin-bottom: 10px;
+        }
+
+        #clinic-info h2 {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        #clinic-info p {
+            margin: 0;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
     <div id="thermal-pos">
+        <!-- Clinic information -->
+        <div id="clinic-info">
+            <h2>Clinic: Cherry Land Pharmacy</h2>
+            <p>Address: Room No - [7], 56 Ward, South Dagon Township</p>
+            <p>Contact: 09444018509 / 09428548008</p>
+        </div>
+
         <!-- Your receipt content will be dynamically generated here -->
+        <table>
+            <!-- Receipt items -->
+        </table>
     </div>
 
     <script>
@@ -90,6 +115,14 @@
                 sub_total: subtotals[id]
             };
         });
+
+        // Render the clinic information
+        const clinicInfo = document.getElementById('clinic-info');
+        clinicInfo.innerHTML = `
+            <h2>Clinic: ${clinic}</h2>
+            <p>Address: ${address}</p>
+            <p>Contact: ${contact}</p>
+        `;
 
         // Render the receipt using the result array
         const thermalPos = document.getElementById('thermal-pos');
@@ -165,34 +198,7 @@
         customerRow.appendChild(tdCustomerValue);
         customerTable.appendChild(customerRow);
 
-        const clinicRow = document.createElement('tr');
-        const tdClinicLabel = document.createElement('th');
-        tdClinicLabel.textContent = 'Clinic';
-        const tdClinicValue = document.createElement('td');
-        tdClinicValue.textContent = clinic;
-        clinicRow.appendChild(tdClinicLabel);
-        clinicRow.appendChild(tdClinicValue);
-        customerTable.appendChild(clinicRow);
-
-        const addressRow = document.createElement('tr');
-        const tdAddressLabel = document.createElement('th');
-        tdAddressLabel.textContent = 'Address';
-        const tdAddressValue = document.createElement('td');
-        tdAddressValue.textContent = address;
-        addressRow.appendChild(tdAddressLabel);
-        addressRow.appendChild(tdAddressValue);
-        customerTable.appendChild(addressRow);
-
-        const contactRow = document.createElement('tr');
-        const tdContactLabel = document.createElement('th');
-        tdContactLabel.textContent = 'Contact';
-        const tdContactValue = document.createElement('td');
-        tdContactValue.textContent = contact;
-        contactRow.appendChild(tdContactLabel);
-        contactRow.appendChild(tdContactValue);
-        customerTable.appendChild(contactRow);
-
-        thermalPos.appendChild(customerTable);
+        thermalPos.insertBefore(customerTable, table);
 
         // Print the receipt
         window.print();
