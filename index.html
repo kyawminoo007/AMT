@@ -14,13 +14,13 @@
     <script>
         // Parse the query parameters to get the item, price, quantity, and subtotal arrays
         const urlParams = new URLSearchParams(window.location.search);
-        var item = urlParams.get('item').split(',');
-        var price = urlParams.get('price').split(',');
-        var qty = urlParams.get('qty').split(',');
-        var subtotal = urlParams.get('subtotal').split(',');
+        const item = urlParams.get('item').split(',');
+        const price = urlParams.get('price').split(',');
+        const qty = urlParams.get('qty').split(',');
+        const subtotal = urlParams.get('subtotal').split(',');
 
         // Create an array to hold the items
-        var result = [];
+        const result = [];
 
         // Iterate over the item array to create objects and push them into the result array
         item.forEach(function(value, id) => {
