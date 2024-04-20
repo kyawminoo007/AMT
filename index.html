@@ -158,13 +158,13 @@ result.forEach(row => {
 });
 thermalPos.appendChild(table);
 
-      // Add total, payment, and balance to the receipt
+// Add total, payment, and balance to the receipt
 const totalRow = document.createElement('tr');
 const tdTotalLabel = document.createElement('th');
 tdTotalLabel.textContent = 'Total';
 const tdTotalValue = document.createElement('td');
 tdTotalValue.textContent = total;
-tdTotalValue.classList.add('right-align'); // Add a class for right alignment
+tdTotalValue.style.textAlign = 'right'; // Set text alignment to right
 totalRow.appendChild(tdTotalLabel);
 totalRow.appendChild(tdTotalValue);
 table.appendChild(totalRow);
@@ -174,7 +174,7 @@ const tdPaymentLabel = document.createElement('th');
 tdPaymentLabel.textContent = 'Payment';
 const tdPaymentValue = document.createElement('td');
 tdPaymentValue.textContent = payment;
-tdPaymentValue.classList.add('right-align'); // Add a class for right alignment
+tdPaymentValue.style.textAlign = 'right'; // Set text alignment to right
 paymentRow.appendChild(tdPaymentLabel);
 paymentRow.appendChild(tdPaymentValue);
 table.appendChild(paymentRow);
@@ -184,7 +184,7 @@ const tdBalanceLabel = document.createElement('th');
 tdBalanceLabel.textContent = 'Balance';
 const tdBalanceValue = document.createElement('td');
 tdBalanceValue.textContent = balance;
-tdBalanceValue.classList.add('right-align'); // Add a class for right alignment
+tdBalanceValue.style.textAlign = 'right'; // Set text alignment to right
 balanceRow.appendChild(tdBalanceLabel);
 balanceRow.appendChild(tdBalanceValue);
 table.appendChild(balanceRow);
