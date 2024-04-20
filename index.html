@@ -67,7 +67,7 @@
         #clinic-info p {
             margin: 0;
             font-size: 12px;
-            text-align: left;
+            text-align: center;
         }
     </style>
 </head>
@@ -120,9 +120,9 @@
         // Render the clinic information
         const clinicInfo = document.getElementById('clinic-info');
         clinicInfo.innerHTML = `
-            <h2>Clinic: ${clinic}</h2>
-            <p>Address: ${address}</p>
-            <p>Contact: ${contact}</p>
+            <h2>${clinic}</h2>
+            <p>${address}</p>
+            <p>${contact}</p>
         `;
 
         // Render the receipt using the result array
