@@ -33,14 +33,15 @@ table, th {
         const result = [];
 
         // Iterate over the item array to create objects and push them into the result array
-        item.forEach(function(value, id) => {
-            result[id] = {
-                item: item[id],
-                price: price[id],
-                qty: qty[id],
-                sub_total: subtotal[id]
-            });
-        });
+        
+   item.forEach(function(value, id) {
+    result[id] = {
+        item: item[id],
+        price: price[id],
+        qty: qty[id],
+        sub_total: subtotal[id]
+    };
+});
 
         // Render the receipt using the result array
         const thermalPos = document.getElementById('thermal-pos');
