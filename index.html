@@ -125,29 +125,31 @@
             <p>${address}</p>
             <p>${contact}</p>
         `;
-
         // Render the receipt using the result array
-        const thermalPos = document.getElementById('thermal-pos');
-        const table = document.createElement('table');
-        result.forEach(row => {
-            const trItem = document.createElement('tr');
-            const tdItem = document.createElement('td');
-            tdItem.textContent = row.item;
-            const tdSubTotal = document.createElement('td');
-            tdSubTotal.textContent = 'K' + row.sub_total;
-            tdSubTotal.classList.add('subtotal'); // Add the subtotal class
-            trItem.appendChild(tdItem);
-            trItem.appendChild(tdSubTotal);
-            table.appendChild(trItem);
+const thermalPos = document.getElementById('thermal-pos');
+const table = document.createElement('table');
+result.forEach(row => {
+    const trItem = document.createElement('tr');
+    const tdItem = document.createElement('td');
+    tdItem.textContent = row.item;
+    trItem.appendChild(tdItem);
 
-            const trQtyPrice = document.createElement('tr');
-            const tdQtyPrice = document.createElement('td');
-            tdQtyPrice.textContent = row.qty + ' x ' + row.price;
-            tdQtyPrice.classList.add('qty-price');
-            trQtyPrice.appendChild(tdQtyPrice);
-            table.appendChild(trQtyPrice);
-        });
-        thermalPos.appendChild(table);
+    const tdSubTotal = document.createElement('td');
+    tdSubTotal.textContent = 'K' + row.sub_total;
+    tdSubTotal.classList.add('subtotal'); // Add the subtotal class
+    tdSubTotal.style.textAlign = 'right'; // Set text alignment to right
+    trItem.appendChild(tdSubTotal);
+
+    table.appendChild(trItem);
+
+    const trQtyPrice = document.createElement('tr');
+    const tdQtyPrice = document.createElement('td');
+    tdQtyPrice.textContent = row.qty + ' x ' + row.price;
+    tdQtyPrice.classList.add('qty-price');
+    trQtyPrice.appendChild(tdQtyPrice);
+    table.appendChild(trQtyPrice);
+});
+thermalPos.appendChild(table);
 
         // Add total, payment, and balance to the receipt
         const totalRow = document.createElement('tr');
