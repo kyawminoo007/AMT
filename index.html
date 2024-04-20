@@ -190,16 +190,17 @@ balanceRow.appendChild(tdBalanceValue);
 table.appendChild(balanceRow);
 
         // Add the footer
-        const footerTable = document.createElement('table');
-        const footerRow = document.createElement('tr');
-        const tdDate = document.createElement('td');
-        tdDate.textContent = 'Date: ' + date;
-        const tdInvoice = document.createElement('td');
-        tdInvoice.textContent = 'Invoice: ' + invoice;
-        footerRow.appendChild(tdDate);
-        footerRow.appendChild(tdInvoice);
-        footerTable.appendChild(footerRow);
-        thermalPos.appendChild(footerTable);
+const footerTable = document.createElement('table');
+const footerRow = document.createElement('tr');
+const tdDate = document.createElement('td');
+tdDate.textContent = 'Date: ' + date;
+const tdInvoice = document.createElement('td');
+tdInvoice.textContent = 'Invoice: ' + invoice;
+tdInvoice.style.textAlign = 'right'; // Set text alignment to right
+footerRow.appendChild(tdDate);
+footerRow.appendChild(tdInvoice);
+footerTable.appendChild(footerRow);
+thermalPos.appendChild(footerTable);
 
         // Add customer information
         const customerTable = document.createElement('table');
