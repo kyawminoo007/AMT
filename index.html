@@ -43,6 +43,16 @@
         #thermal-pos th, #thermal-pos td {
             font-size: 12px;
         }
+
+        /* Right align the subtotal */
+        .subtotal {
+            text-align: right;
+        }
+
+        /* Left align the quantity x price */
+        .qty-price {
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -85,17 +95,22 @@
         const thermalPos = document.getElementById('thermal-pos');
         const table = document.createElement('table');
         result.forEach(row => {
-            const tr = document.createElement('tr');
+            const trItem = document.createElement('tr');
             const tdItem = document.createElement('td');
             tdItem.textContent = row.item;
-            const tdQtyPrice = document.createElement('td');
-            tdQtyPrice.textContent = row.qty + ' x ' + row.price;
             const tdSubTotal = document.createElement('td');
             tdSubTotal.textContent = 'K' + row.sub_total;
-            tr.appendChild(tdItem);
-            tr.appendChild(tdQtyPrice);
-            tr.appendChild(tdSubTotal);
-            table.appendChild(tr);
+            tdSubTotal.classList.add('subtotal');
+            trItem.appendChild(tdItem);
+            trItem.appendChild(tdSubTotal);
+            table.appendChild(trItem);
+
+            const trQtyPrice = document.createElement('tr');
+            const tdQtyPrice = document.createElement('td');
+            tdQtyPrice.textContent = row.qty + ' x ' + row.price;
+            tdQtyPrice.classList.add('qty-price');
+            trQtyPrice.appendChild(tdQtyPrice);
+            table.appendChild(trQtyPrice);
         });
         thermalPos.appendChild(table);
 
@@ -103,7 +118,7 @@
         const totalRow = document.createElement('tr');
         const tdTotalLabel = document.createElement('th');
         tdTotalLabel.textContent = 'Total';
-        const tdTotalValue = document.createElement('th');
+        const tdTotalValue = document.createElement('td');
         tdTotalValue.textContent = total;
         totalRow.appendChild(tdTotalLabel);
         totalRow.appendChild(tdTotalValue);
@@ -112,7 +127,7 @@
         const paymentRow = document.createElement('tr');
         const tdPaymentLabel = document.createElement('th');
         tdPaymentLabel.textContent = 'Payment';
-        const tdPaymentValue = document.createElement('th');
+        const tdPaymentValue = document.createElement('td');
         tdPaymentValue.textContent = payment;
         paymentRow.appendChild(tdPaymentLabel);
         paymentRow.appendChild(tdPaymentValue);
@@ -121,7 +136,7 @@
         const balanceRow = document.createElement('tr');
         const tdBalanceLabel = document.createElement('th');
         tdBalanceLabel.textContent = 'Balance';
-        const tdBalanceValue = document.createElement('th');
+        const tdBalanceValue = document.createElement('td');
         tdBalanceValue.textContent = balance;
         balanceRow.appendChild(tdBalanceLabel);
         balanceRow.appendChild(tdBalanceValue);
