@@ -2,55 +2,84 @@
 <html>
 <head>
     <title>Pharmacy POS Receipt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-<style>
-    /* CSS styles for your receipt */
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
+        #thermal-pos {
+            width: 80mm; /* Adjust the width as per your printer paper size */
+            margin: 0 auto;
+            font-size: 12px;
+        }
 
-    #thermal-pos table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+        #thermal-pos table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-    #thermal-pos th, #thermal-pos td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        font-size: 2.95mm;
-        font-family: sans-serif;
-        text-align: left;
-    }
-</style>
+        #thermal-pos th, #thermal-pos td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #thermal-pos th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #thermal-pos tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #thermal-pos tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Adjust the font size for the receipt */
+        #thermal-pos th, #thermal-pos td {
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body>
     <div id="thermal-pos">
-        <!-- Your HTML content here -->
+        <!-- Your receipt content will be dynamically generated here -->
     </div>
 
     <script>
-        // Parse the query parameters to get the item, price, quantity, and subtotal arrays
+        // Parse the query parameters to get the data for the receipt
         const urlParams = new URLSearchParams(window.location.search);
-        const item = urlParams.get('item').split(',');
-        const price = urlParams.get('price').split(',');
-        const qty = urlParams.get('qty').split(',');
-        const subtotal = urlParams.get('subtotal').split(',');
+        const invoice = urlParams.get('invoice');
+        const date = urlParams.get('date');
+        const customer = urlParams.get('customer');
+        const phone = urlParams.get('phone');
+        const clinic = urlParams.get('clinic');
+        const address = urlParams.get('address');
+        const contact = urlParams.get('contact');
+        const total = urlParams.get('total');
+        const payment = urlParams.get('payment');
+        const balance = urlParams.get('balance');
+        const items = urlParams.get('items').split(',');
+        const prices = urlParams.get('price').split(',');
+        const quantities = urlParams.get('qty').split(',');
+        const subtotals = urlParams.get('sub_total').split(',');
 
         // Create an array to hold the items
         const result = [];
 
-        // Iterate over the item array to create objects and push them into the result array
-        
-   item.forEach(function(value, id) {
-    result[id] = {
-        item: item[id],
-        price: price[id],
-        qty: qty[id],
-        sub_total: subtotal[id]
-    };
-});
+        // Iterate over the items to create objects and push them into the result array
+        items.forEach((value, id) => {
+            result[id] = {
+                item: items[id],
+                price: prices[id],
+                qty: quantities[id],
+                sub_total: subtotals[id]
+            };
+        });
 
         // Render the receipt using the result array
         const thermalPos = document.getElementById('thermal-pos');
@@ -70,10 +99,7 @@
         });
         thermalPos.appendChild(table);
 
-        // Add total, cash, and balance to the receipt
-        const total = urlParams.get('total');
-        const payment = urlParams.get('Payment');
-        const balance = urlParams.get('Balance');
+        // Add total, payment, and balance to the receipt
         const totalRow = document.createElement('tr');
         const tdTotalLabel = document.createElement('th');
         tdTotalLabel.textContent = 'Total';
@@ -83,14 +109,14 @@
         totalRow.appendChild(tdTotalValue);
         table.appendChild(totalRow);
 
-        const cashRow = document.createElement('tr');
-        const tdCashLabel = document.createElement('th');
-        tdCashLabel.textContent = 'Cash';
-        const tdCashValue = document.createElement('th');
-        tdCashValue.textContent = payment;
-        cashRow.appendChild(tdCashLabel);
-        cashRow.appendChild(tdCashValue);
-        table.appendChild(cashRow);
+        const paymentRow = document.createElement('tr');
+        const tdPaymentLabel = document.createElement('th');
+        tdPaymentLabel.textContent = 'Payment';
+        const tdPaymentValue = document.createElement('th');
+        tdPaymentValue.textContent = payment;
+        paymentRow.appendChild(tdPaymentLabel);
+        paymentRow.appendChild(tdPaymentValue);
+        table.appendChild(paymentRow);
 
         const balanceRow = document.createElement('tr');
         const tdBalanceLabel = document.createElement('th');
@@ -105,13 +131,53 @@
         const footerTable = document.createElement('table');
         const footerRow = document.createElement('tr');
         const tdDate = document.createElement('td');
-        tdDate.textContent = urlParams.get('Date');
-        const tdIdInvoice = document.createElement('td');
-        tdIdInvoice.textContent = urlParams.get('id_invoice');
+        tdDate.textContent = 'Date: ' + date;
+        const tdInvoice = document.createElement('td');
+        tdInvoice.textContent = 'Invoice: ' + invoice;
         footerRow.appendChild(tdDate);
-        footerRow.appendChild(tdIdInvoice);
+        footerRow.appendChild(tdInvoice);
         footerTable.appendChild(footerRow);
         thermalPos.appendChild(footerTable);
+
+        // Add customer information
+        const customerTable = document.createElement('table');
+        const customerRow = document.createElement('tr');
+        const tdCustomerLabel = document.createElement('th');
+        tdCustomerLabel.textContent = 'Customer';
+        const tdCustomerValue = document.createElement('td');
+        tdCustomerValue.textContent = customer + ' (' + phone + ')';
+        customerRow.appendChild(tdCustomerLabel);
+        customerRow.appendChild(tdCustomerValue);
+        customerTable.appendChild(customerRow);
+
+        const clinicRow = document.createElement('tr');
+        const tdClinicLabel = document.createElement('th');
+        tdClinicLabel.textContent = 'Clinic';
+        const tdClinicValue = document.createElement('td');
+        tdClinicValue.textContent = clinic;
+        clinicRow.appendChild(tdClinicLabel);
+        clinicRow.appendChild(tdClinicValue);
+        customerTable.appendChild(clinicRow);
+
+        const addressRow = document.createElement('tr');
+        const tdAddressLabel = document.createElement('th');
+        tdAddressLabel.textContent = 'Address';
+        const tdAddressValue = document.createElement('td');
+        tdAddressValue.textContent = address;
+        addressRow.appendChild(tdAddressLabel);
+        addressRow.appendChild(tdAddressValue);
+        customerTable.appendChild(addressRow);
+
+        const contactRow = document.createElement('tr');
+        const tdContactLabel = document.createElement('th');
+        tdContactLabel.textContent = 'Contact';
+        const tdContactValue = document.createElement('td');
+        tdContactValue.textContent = contact;
+        contactRow.appendChild(tdContactLabel);
+        contactRow.appendChild(tdContactValue);
+        customerTable.appendChild(contactRow);
+
+        thermalPos.appendChild(customerTable);
 
         // Print the receipt
         window.print();
