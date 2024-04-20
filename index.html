@@ -17,7 +17,7 @@
 
         #thermal-pos table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: Nill;
         }
 
         #thermal-pos th, #thermal-pos td {
@@ -133,18 +133,19 @@
             const trItem = document.createElement('tr');
             const tdItem = document.createElement('td');
             tdItem.textContent = row.item;
-            trItem.appendChild(tdItem);
-
-            const tdQtyPrice = document.createElement('td');
-            tdQtyPrice.textContent = row.qty + ' x ' + row.price;
-            trItem.appendChild(tdQtyPrice);
-
             const tdSubTotal = document.createElement('td');
             tdSubTotal.textContent = 'K' + row.sub_total;
-            tdSubTotal.classList.add('subtotal');
+            tdSubTotal.classList.add('subtotal'); // Add the subtotal class
+            trItem.appendChild(tdItem);
             trItem.appendChild(tdSubTotal);
-
             table.appendChild(trItem);
+
+            const trQtyPrice = document.createElement('tr');
+            const tdQtyPrice = document.createElement('td');
+            tdQtyPrice.textContent = row.qty + ' x ' + row.price;
+            tdQtyPrice.classList.add('qty-price');
+            trQtyPrice.appendChild(tdQtyPrice);
+            table.appendChild(trQtyPrice);
         });
         thermalPos.appendChild(table);
 
