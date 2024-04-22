@@ -210,10 +210,11 @@ table.appendChild(balanceRow);
 const sloganRow = document.createElement('tr');
 const tdSloganLabel = document.createElement('th');
 tdSloganLabel.textContent = 'ကျန်းမာသုခ';
-tdSloganLabel.style.textAlign = 'center'; // Set text alignment to center
+tdSloganLabel.style.textAlign = 'right'; // Set text alignment to right
 const tdSloganValue = document.createElement('td');
 tdSloganValue.textContent = "အမြဲပြည့်ဝစေ စိမ်းလဲ့ဝေ";
 tdSloganValue.style.textAlign = 'center'; // Set text alignment to center
+tdSloganValue.style.fontWeight = 'bold'; 
 sloganRow.appendChild(tdSloganLabel);
 sloganRow.appendChild(tdSloganValue);
 table.appendChild(sloganRow);
