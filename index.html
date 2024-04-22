@@ -207,8 +207,15 @@ balanceRow.appendChild(tdBalanceLabel);
 balanceRow.appendChild(tdBalanceValue);
 table.appendChild(balanceRow);
 
-   <div id="slogan">
-            <h2>ကျန်းမာသုခ အမြဲပြည့်ဝစေ စိမ်းလဲ့ဝေ</h2> </div>
+const sloganRow = document.createElement('tr');
+const tdSloganLabel = document.createElement('th');
+tdSloganLabel.textContent = '';
+const tdSloganValue = document.createElement('td');
+tdSloganValue.textContent = "ကျန်းမာသုခ အမြဲပြည့်ဝစေ စိမ်းလဲ့ဝေ";
+tdSloganValue.style.textAlign = 'center'; // Set text alignment to center
+sloganRow.appendChild(tdSloganLabel);
+sloganRow.appendChild(tdSloganValue);
+table.appendChild(sloganRow);
 
         // Add the footer
 const footerTable = document.createElement('table');
