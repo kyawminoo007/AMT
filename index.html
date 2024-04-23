@@ -73,6 +73,22 @@
         #clinic-info {
             margin-bottom: 10px;
         }
+/* Left align the text for customer, doctor, and cashier tables */
+#thermal-pos .customer-table,
+#thermal-pos .doctor-table,
+#thermal-pos .cashier-table {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#thermal-pos .customer-table th,
+#thermal-pos .customer-table td,
+#thermal-pos .doctor-table th,
+#thermal-pos .doctor-table td,
+#thermal-pos .cashier-table th,
+#thermal-pos .cashier-table td {
+    text-align: left;
+}
 
         #clinic-info h2 {
             margin: 0;
@@ -221,47 +237,43 @@ footerTable.appendChild(footerRow);
 thermalPos.appendChild(footerTable);
 
         // Add customer information
-        const customerTable = document.createElement('table');
-        const customerRow = document.createElement('tr');
-        const tdCustomerLabel = document.createElement('th');
-        tdCustomerLabel.textContent = 'Customer';
-        const tdCustomerValue = document.createElement('td');
-        tdCustomerValue.textContent = customer;
-
-tdCustomerValue.style.textAlign = 'left'; // Set text alignment to left
-        customerRow.appendChild(tdCustomerLabel);
-        customerRow.appendChild(tdCustomerValue);
-        customerTable.appendChild(customerRow);
-
-        thermalPos.insertBefore(customerTable, table);
-
+const customerTable = document.createElement('table');
+customerTable.classList.add('customer-table'); // Add the customer-table class
+const customerRow = document.createElement('tr');
+const tdCustomerLabel = document.createElement('th');
+tdCustomerLabel.textContent = 'Customer';
+const tdCustomerValue = document.createElement('td');
+tdCustomerValue.textContent = customer;
+customerRow.appendChild(tdCustomerLabel);
+customerRow.appendChild(tdCustomerValue);
+customerTable.appendChild(customerRow);
+thermalPos.insertBefore(customerTable, table);
 
 // Add doctor information
-        const doctorTable = document.createElement('table');
-        const doctorRow = document.createElement('tr');
-        const tdDoctorLabel = document.createElement('th');
-        tdDoctorLabel.textContent = 'Doctor';
-        const tdDoctorValue = document.createElement('td');
-        tdDoctorValue.textContent = doctor;
-tdDoctorValue.style.textAlign = 'left'; // Set text alignment to left
-      doctorRow.appendChild(tdDoctorLabel);
-      doctorRow.appendChild(tdDoctorValue);
-        doctorTable.appendChild(doctorRow);
-        thermalPos.insertBefore(doctorTable, table);
-
+const doctorTable = document.createElement('table');
+doctorTable.classList.add('doctor-table'); // Add the doctor-table class
+const doctorRow = document.createElement('tr');
+const tdDoctorLabel = document.createElement('th');
+tdDoctorLabel.textContent = 'Doctor';
+const tdDoctorValue = document.createElement('td');
+tdDoctorValue.textContent = doctor;
+doctorRow.appendChild(tdDoctorLabel);
+doctorRow.appendChild(tdDoctorValue);
+doctorTable.appendChild(doctorRow);
+thermalPos.insertBefore(doctorTable, table);
 
 // Add cashier information
-        const cashierTable = document.createElement('table');
-        const cashierRow = document.createElement('tr');
-        const tdCashierLabel = document.createElement('th');
-        tdCashierLabel.textContent = 'Cashier';
-        const tdCashierValue = document.createElement('td');
-        tdCashierValue.textContent = cashier;
-tdCashierValue.style.textAlign = 'left'; // Set text alignment to left
-      cashierRow.appendChild(tdCashierLabel);
-      cashierRow.appendChild(tdCashierValue);
-        cashierTable.appendChild(cashierRow);
-        thermalPos.insertBefore(cashierTable, table);
+const cashierTable = document.createElement('table');
+cashierTable.classList.add('cashier-table'); // Add the cashier-table class
+const cashierRow = document.createElement('tr');
+const tdCashierLabel = document.createElement('th');
+tdCashierLabel.textContent = 'Cashier';
+const tdCashierValue = document.createElement('td');
+tdCashierValue.textContent = cashier;
+cashierRow.appendChild(tdCashierLabel);
+cashierRow.appendChild(tdCashierValue);
+cashierTable.appendChild(cashierRow);
+thermalPos.insertBefore(cashierTable, table);
 
         // Print the receipt
         window.print();
