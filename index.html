@@ -118,6 +118,7 @@
         const date = urlParams.get('date');
         const customer = urlParams.get('customer');
         const doctor = urlParams.get('doctor');
+const cashier = urlParams.get('cashier');
         const clinic = urlParams.get('clinic');
         const address = urlParams.get('address');
         const contact = urlParams.get('contact');
@@ -244,6 +245,20 @@ tdDoctorValue.style.textAlign = 'left'; // Set text alignment to left
         doctorRow.appendChild(tdDoctorValue);
         doctorTable.appendChild(doctorRow);
         thermalPos.insertBefore(doctorTable, table);
+
+
+// Add cashier information
+        const cashierTable = document.createElement('table');
+        const cashierRow = document.createElement('tr');
+        const tdCashierLabel = document.createElement('th');
+        tdCashierLabel.textContent = 'Cashier';
+        const tdCashierValue = document.createElement('td');
+        tdCashierValue.textContent = cashier;
+tdCashierValue.style.textAlign = 'left'; // Set text alignment to left
+        cashierRow.appendChild(tdCashierLabel);
+        cashierRow.appendChild(tdCashierValue);
+        cashierTable.appendChild(cashierRow);
+        thermalPos.insertBefore(cashierTable, table);
 
         // Print the receipt
         window.print();
