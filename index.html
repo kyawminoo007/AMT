@@ -103,15 +103,14 @@
         <div id="clinic-info">
             <h2>Sane Lae Wai Specialist Clinic</h2>
             <p>No - [186],Bogyoke Road,2 Ward, Shwe Pyi Thar City</p>
-            <p>09-885995511 / 09-885995522</p>
+            <p>09-885995511/09-885995522</p>
         </div>
 
         <!-- Your receipt content will be dynamically generated here -->
         <table>
             <!-- Receipt items -->
         </table>
-<p class="slogan">ကျန်းမာသုခ အမြဲပြည့်ဝစေ စိမ်းလဲ့ဝေ</p>
-</div>
+
     <script>
         // Parse the query parameters to get the data for the receipt
         const urlParams = new URLSearchParams(window.location.search);
@@ -240,6 +239,7 @@ thermalPos.appendChild(footerTable);
         tdDoctorLabel.textContent = 'Doctor';
         const tdDoctorValue = document.createElement('td');
         tdDoctorValue.textContent = doctor;
+tdDoctor.style.textAlign = 'left'; // Set text alignment to left
         doctorRow.appendChild(tdDoctorLabel);
         doctorRow.appendChild(tdDoctorValue);
         doctorTable.appendChild(doctorRow);
@@ -248,5 +248,7 @@ thermalPos.appendChild(footerTable);
         // Print the receipt
         window.print();
     </script>
+<p class="slogan">ကျန်းမာသုခ အမြဲပြည့်ဝစေ စိမ်းလဲ့ဝေ</p>
+</div>
 </body>
 </html>
