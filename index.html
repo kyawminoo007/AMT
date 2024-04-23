@@ -20,6 +20,11 @@
             border-collapse: 1px;
         }
 
+/* Left align text for specific table cells */
+.left-align {
+    text-align: left;
+}
+
         #thermal-pos th, #thermal-pos td {
             border: none solid #ddd;
             padding: 1px;
@@ -244,7 +249,7 @@ const tdCustomerLabel = document.createElement('th');
 tdCustomerLabel.textContent = 'Customer';
 const tdCustomerValue = document.createElement('td');
 tdCustomerValue.textContent = customer;
-tdCustomerValue.style.textAlign = 'left'; // Set text alignment to left
+tdCustomerValue.classList.add('left-align'); // Add class for left alignment
 customerRow.appendChild(tdCustomerLabel);
 customerRow.appendChild(tdCustomerValue);
 customerTable.appendChild(customerRow);
@@ -257,7 +262,7 @@ const tdDoctorLabel = document.createElement('th');
 tdDoctorLabel.textContent = 'Doctor';
 const tdDoctorValue = document.createElement('td');
 tdDoctorValue.textContent = doctor;
-tdDoctorValue.style.textAlign = 'left'; // Set text alignment to left
+tdDoctorValue.classList.add('left-align'); // Add class for left alignment
 doctorRow.appendChild(tdDoctorLabel);
 doctorRow.appendChild(tdDoctorValue);
 doctorTable.appendChild(doctorRow);
@@ -270,7 +275,7 @@ const tdCashierLabel = document.createElement('th');
 tdCashierLabel.textContent = 'Cashier';
 const tdCashierValue = document.createElement('td');
 tdCashierValue.textContent = cashier;
-tdCashierValue.style.textAlign = 'left'; // Set text alignment to left
+tdCashierValue.classList.add('left-align'); // Add class for left alignment
 cashierRow.appendChild(tdCashierLabel);
 cashierRow.appendChild(tdCashierValue);
 cashierTable.appendChild(cashierRow);
