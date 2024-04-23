@@ -240,7 +240,6 @@ thermalPos.appendChild(footerTable);
         tdDoctorLabel.textContent = 'Doctor';
         const tdDoctorValue = document.createElement('td');
         tdDoctorValue.textContent = doctor;
-tdDoctorValue.style.textAlign = 'left'; // Set text alignment to left
         doctorRow.appendChild(tdDoctorLabel);
         doctorRow.appendChild(tdDoctorValue);
         doctorTable.appendChild(doctorRow);
@@ -254,9 +253,8 @@ tdDoctorValue.style.textAlign = 'left'; // Set text alignment to left
         tdCashierLabel.textContent = 'Cashier';
         const tdCashierValue = document.createElement('td');
         tdCashierValue.textContent = cashier;
-tdCashierValue.style.textAlign = 'left'; // Set text alignment to left
-        cashierRow.appendChild(tdCashierLabel);
-        cashierRow.appendChild(tdCashierValue);
+      cashierRow.appendChild(tdCashierLabel);
+      cashierRow.appendChild(tdCashierValue);
         cashierTable.appendChild(cashierRow);
         thermalPos.insertBefore(cashierTable, table);
 
