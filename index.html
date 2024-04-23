@@ -207,18 +207,6 @@ balanceRow.appendChild(tdBalanceLabel);
 balanceRow.appendChild(tdBalanceValue);
 table.appendChild(balanceRow);
 
-const sloganRow = document.createElement('tr');
-const tdSloganLabel = document.createElement('th');
-tdSloganLabel.textContent = 'ကျန်းမာသုခ';
-tdSloganLabel.style.textAlign = 'center'; // Set text alignment to right
-const tdSloganValue = document.createElement('td');
-tdSloganValue.textContent = "အမြဲပြည့်ဝစေ စိမ်းလဲ့ဝေ";
-tdSloganValue.style.textAlign = 'left'; // Set text alignment to left
-tdSloganValue.style.fontWeight = 'bold'; 
-sloganRow.appendChild(tdSloganLabel);
-sloganRow.appendChild(tdSloganValue);
-table.appendChild(sloganRow);
-
         // Add the footer
 const footerTable = document.createElement('table');
 const footerRow = document.createElement('tr');
@@ -244,6 +232,18 @@ thermalPos.appendChild(footerTable);
         customerTable.appendChild(customerRow);
 
         thermalPos.insertBefore(customerTable, table);
+
+// Add doctor information
+        const doctorTable = document.createElement('table');
+        const doctorRow = document.createElement('tr');
+        const tdDoctorLabel = document.createElement('th');
+        tdDoctorLabel.textContent = 'Doctor';
+        const tdCustomerValue = document.createElement('td');
+        tdDoctorValue.textContent = doctor;
+        doctorRow.appendChild(tdDoctorLabel);
+        doctorRow.appendChild(tdDoctorValue);
+        doctorTable.appendChild(doctorRow);
+        thermalPos.insertBefore(doctorTable, table);
 
         // Print the receipt
         window.print();
